@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include ("head") %>
+  </head>
+  <body>
+    <h1>Hi <%= firstName %></h1>
+    <h2>Post a message below</h2>
+    <form action="/postmessage" class="postit" method="POST">
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" required></textarea>
+      <h3 name="error" class="error-message" style="color: red"></h3>
+      <button type="submit">Post a message</button>
+    </form>
+    <div class="users">
+      <h2><%= firstName %></h2>
+      <p><%= userMessages%></p>
+      <a href="/delete/users/user_id" class="del-user">Delete</a>
+      <a href="/users/user_id" class="update-user">Edit</a>
+      <div class="commentcontainer">
+        <div class="comment">
+          <p>Comment text here.</p>
+          <small>Comment created at</small>
+          <a href="/delete/user_id/comment_id">Delete comment</a>
+        </div>
+        <p>No comments yet.</p>
+      </div>
+      <form action="/postcomment" class="postcomment" method="POST">
+        <label for="comment-user_id">Type your comment here</label>
+        <input type="text" id="comment-user_id" name="comment" required />
+        <input type="hidden" name="usersId" value="user_id" />
+        <button type="submit">Comment</button>
+      </form>
+      <!-- Repeat user entries as needed -->
+    </div>
+  </body>
+</html>
